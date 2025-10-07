@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nihed Hammami | Ingénieure Full-Stack</title>
+    
+    <meta name="description" content="Nihed Hammami - Ingénieure Full-Stack spécialisée en Angular, Node.js et Laravel. Portfolio de projets web et expériences professionnelles.">
+    <meta name="keywords" content="Développeuse Full-Stack, Angular, Node.js, Laravel, Développement Web, Tunisie">
+    <meta name="author" content="Nihed Hammami">
+
+    
+    <meta property="og:title" content="Nihed Hammami | Ingénieure Full-Stack">
+    <meta property="og:description" content="Portfolio professionnel - Développeuse Full-Stack spécialisée en Angular et Node.js">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com">
+
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #7C3AED;
+            --primary-light: #8B5CF6;
+            --dark: #1F2937;
+            --light: #F9FAFB;
+        }
+        
+        #back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .hover-scale {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .hover-scale:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            left: -8px;
+            top: 24px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border: 3px solid white;
+            z-index: 1;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 4px;
+            bottom: -10px;
+            left: 20%;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            border-radius: 2px;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s ease;
+        }
+        
+        .section-title:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        /* Animation menu mobile */
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+        
+        .mobile-menu.open {
+            max-height: 500px;
+        }
+        
+        /* Ajustements responsives */
+        @media (max-width: 768px) {
+            .hero-content {
+                text-align: center;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .about-content {
+                text-align: center;
+            }
+            
+            .about-info {
+                justify-content: center;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .timeline-item::before {
+                left: -8px;
+                top: 20px;
+            }
+        }
+        
+        /* Barre de défilement personnalisée */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-light);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Arrière-plan avec particules flottantes -->
+    <div id="particles-js" class="fixed inset-0 z-0"></div>
+    
+    <!-- Conteneur principal -->
+    <div class="relative z-10 flex flex-col min-h-screen">
+        <!-- Navigation -->
+        <header class="glass-card sticky top-0 z-50 shadow-sm">
+            <div class="container mx-auto px-4 sm:px-6 py-3">
+                <div class="flex justify-between items-center">
+                    <div class="text-2xl font-bold">
+                        <span class="gradient-text">Nihed</span> <span class="text-gray-800">Hammami</span>
+                    </div>
+                    
+                    <nav class="hidden md:block">
+                        <ul class="flex space-x-6 lg:space-x-8">
+                            <li><a href="#home" class="nav-link text-gray-700 hover:text-purple-600">Accueil</a></li>
+                            <li><a href="#about" class="nav-link text-gray-700 hover:text-purple-600">À propos</a></li>
+                            <li><a href="#experience" class="nav-link text-gray-700 hover:text-purple-600">Expérience</a></li>
+                            <li><a href="#projects" class="nav-link text-gray-700 hover:text-purple-600">Projets</a></li>
+                            <li><a href="#contact" class="nav-link text-gray-700 hover:text-purple-600">Contact</a></li>
+                        </ul>
+                    </nav>
+                    
+                    <button id="mobile-menu-button" class="md:hidden text-gray-700 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+                
+                <!-- Menu Mobile -->
+                <div id="mobile-menu" class="mobile-menu md:hidden bg-white mt-2 rounded-lg shadow-lg">
+                    <ul class="px-4 py-2 space-y-3">
+                        <li><a href="#home" class="block py-2 text-gray-700 hover:text-purple-600">Accueil</a></li>
+                        <li><a href="#about" class="block py-2 text-gray-700 hover:text-purple-600">À propos</a></li>
+                        <li><a href="#experience" class="block py-2 text-gray-700 hover:text-purple-600">Expérience</a></li>
+                        <li><a href="#projects" class="block py-2 text-gray-700 hover:text-purple-600">Projets</a></li>
+                        <li><a href="#contact" class="block py-2 text-gray-700 hover:text-purple-600">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <!-- Section Hero -->
+        <section id="home" class="relative py-16 md:py-24 lg:py-32 overflow-hidden">
+            <div class="container mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0 hero-content">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
+                        Bonjour, je suis <span class="gradient-text">Nihed Hammami</span>
+                    </h1>
+                    <h2 class="text-2xl sm:text-3xl text-gray-600 mb-6">
+                        Ingénieure en développement web
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-8 max-w-lg mx-auto md:mx-0">
+                        Ma maîtrise des technologies modernes comme Angular pour des interfaces utilisateur dynamiques, et Node.js, PHP/Laravel pour des logiques serveur efficaces, me permet de construire des architectures solides.
+                    </p>
+                                         
+                    
+                        
+                    <div class="flex flex-wrap gap-4 hero-buttons">
+                        <a href="images/Cv-Nihed-Hammami.pdf" download class="px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-400 text-white rounded-lg hover:shadow-lg transition-all flex items-center justify-center">
+                            <i class="fas fa-download mr-2"></i> Télécharger CV
+                        </a>
+                        <a href="#contact" class="px-6 py-3 border border-purple-600 text-purple-600 rounded-lg hover:bg-purple-50 transition-all flex items-center justify-center">
+                            <i class="fas fa-paper-plane mr-2"></i> Me Contacter
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 flex justify-center relative mt-12 md:mt-0">
+                    <div class="w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl floating">
+                            <img src="images/logo.PNG" alt="Nihed Hammami" 
+                            class="w-full h-full object-cover" 
+                            loading="lazy"
+                            width="320" 
+                            height="320">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+     <!-- Section À propos  -->
+<section id="about" class="py-20 bg-gradient-to-br from-gray-50 to-purple-50">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <span class="inline-block mb-4 text-purple-600 font-semibold">À PROPOS DE MOI</span>
+            <h2 class="text-4xl font-bold text-gray-800 mb-4">Qui suis-je ?</h2>
+            <div class="w-20 h-1 bg-gradient-to-r from-purple-400 to-purple-600 mx-auto"></div>
+        </div>
+
+        <div class="flex flex-col lg:flex-row items-center gap-12">
+            <!-- Photo de profil avec effet -->
+            <div class="lg:w-2/5 flex justify-center relative">
+                <div class="relative group">
+                    <div class="absolute -inset-2 bg-gradient-to-r from-purple-400 to-purple-600 rounded-2xl blur-md opacity-75 group-hover:opacity-100 transition duration-200"></div>
+                    <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden border-4 border-white shadow-xl">
+                        <img src="images/about.jpg" alt="Nihed Hammami" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contenu -->
+            <div class="lg:w-3/5">
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Ingénieure Full-Stack Passionnée</h3>
+                    
+                    <div class="prose prose-lg text-gray-600 mb-8">
+                        <p class="mb-4">
+                            Je suis <span class="font-semibold text-purple-600">Nihed Hammami</span>, une ingénieure logiciel spécialisée dans les technologies modernes comme Angular et Node. Mon parcours m'a permis de développer une expertise solide dans la création d'applications web performantes et évolutives.
+                        </p>
+                        
+                    </div>
+
+                    <!-- Grille d'informations -->
+                    
+
+                    <!-- Compétences sous forme de tags -->
+                    <div class="mb-8">
+                        <h4 class="font-semibold text-gray-700 mb-4">Domaines d'expertise</h4>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">Angular</span>
+                            <span class="px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">Laravel</span>
+                            <span class="px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">NodeJs</span>
+                            <span class="px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">MongoDB</span>
+                        </div>
+                    </div>
+
+                    <!-- Boutons sociaux -->
+                    <div class="flex flex-wrap gap-4">
+                        <a href="https://github.com/HammamiNihed" class="px-6 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition flex items-center">
+                            <i class="fab fa-github mr-2"></i> GitHub
+                        </a>
+                        <a href="https://www.linkedin.com/in/nihed-hammami-24ab78194" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition flex items-center">
+                            <i class="fab fa-linkedin-in mr-2"></i> LinkedIn
+                        </a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <!-- Section Expérience -->
+        <section id="experience" class="py-16 md:py-20 bg-gray-50">
+            <div class="container mx-auto px-4 sm:px-6">
+                <h2 class="text-3xl font-bold text-center mb-12 md:mb-16">
+                    <span class="section-title">Expériences Professionnelles</span>
+                </h2>
+                
+                <div class="relative">
+                    <div class="border-l-2 border-purple-300 pl-6 md:pl-8 ml-3 md:ml-4 space-y-10 md:space-y-12">
+                        <!-- Expérience 1 -->
+                        <div class="relative timeline-item">
+                            <div class="bg-white p-6 md:p-8 rounded-xl shadow-md hover:shadow-lg transition hover-scale">
+                                <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-3 md:mb-4">
+                                    <h3 class="text-xl font-semibold text-gray-800">Formatrice en Développement Web</h3>
+                                    <span class="bg-gradient-to-r from-purple-600 to-purple-400 text-white px-3 py-1 rounded-full text-sm mt-2 md:mt-0">Déc 2021 – Mai 2025</span>
+                                </div>
+                                <h4 class="text-lg text-purple-600 mb-3 md:mb-4">Intellect Academy | Nabeul, Tunisie</h4>
+                                <p class="text-gray-600 mb-3 md:mb-4">
+                                    Formation de 15-20 apprenants sur les technologies web modernes avec un taux de réussite de 85%.
+                                </p>
+                                <ul class="list-disc pl-5 space-y-2 text-gray-600">
+                                    <li>Conception et animation de programmes Angular 16, Node.js, Laravel 10</li>
+                                    <li>Développement de projets réels (e-commerce, blog, dashboard)</li>
+                                    <li>Accompagnement personnalisé avec 85% de réussite aux évaluations</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Expérience 2 -->
+                        <div class="relative timeline-item">
+                            <div class="bg-white p-6 md:p-8 rounded-xl shadow-md hover:shadow-lg transition hover-scale">
+                                <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-3 md:mb-4">
+                                    <h3 class="text-xl font-semibold text-gray-800">Stage Ingénieur - Projet de Fin d'Études</h3>
+                                    <span class="bg-gradient-to-r from-purple-600 to-purple-400 text-white px-3 py-1 rounded-full text-sm mt-2 md:mt-0">Mars 2021 – Août 2021</span>
+                                </div>
+                                <h4 class="text-lg text-purple-600 mb-3 md:mb-4">Hidopi  | Tunis</h4>
+                                <p class="text-gray-600 mb-3 md:mb-4">
+                                    Conception et développement d'un outil complet de pilotage et de gestion des organismes de formation.
+                                </p>
+                                <ul class="list-disc pl-5 space-y-2 text-gray-600">
+                                    <li>Développement full-stack d'une plateforme de gestion</li>
+                                    <li>Architecture RESTful avec documentation SwaggerUI</li>
+                                    <li>Interface utilisateur moderne avec Angular</li>                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Projets -->
+        <section id="projects" class="py-16 md:py-20 bg-white">
+            <div class="container mx-auto px-4 sm:px-6">
+                <h2 class="text-3xl font-bold text-center mb-12 md:mb-16">
+                    <span class="section-title">Projets</span>
+                </h2>
+                
+                <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+                    <!-- Projet 1 -->
+                    <div class="bg-gray-50 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition hover-scale">
+                        <div class="h-48 bg-gradient-to-r from-purple-500 to-purple-300 flex items-center justify-center">
+                            <i class="fas fa-laptop-code text-white text-4xl md:text-5xl"></i>
+                        </div>
+                        <div class="p-5 md:p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-800">Application de Blog avec Angular</h3>
+                            <p class="text-gray-600 mb-3 md:mb-4">
+                                Développement d'une application de blog complète avec interface d'administration et gestion sécurisée des utilisateurs.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-3 md:mb-4">
+                                <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs">Angular</span>
+                                <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs">Firebase</span>
+                                <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs">TypeScript</span>                                
+                            </div>
+                            <a href="https://ang-blog-1e7a6.web.app" class="text-purple-600 hover:text-purple-800 font-medium flex items-center">
+                                Voir le Projet <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Projet 2 -->
+                    <div class="bg-gray-50 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition hover-scale">
+                        <div class="h-48 bg-gradient-to-r from-blue-500 to-blue-300 flex items-center justify-center">
+                            <i class="fas fa-graduation-cap text-white text-4xl md:text-5xl"></i>
+                        </div>
+                        <div class="p-5 md:p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-800">Plateforme de Formation en Ligne - MOOC
+                            </h3>
+                            <p class="text-gray-600 mb-3 md:mb-4">
+                                Développement d'une plateforme e-learning permettant la création et la gestion de cours en ligne.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-3 md:mb-4">
+                                <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">React</span>
+                                <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">Express.js</span>
+                                <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">Node.js</span>
+                                <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">MongoDB</span>
+                            </div>
+                            <!--<a href="#" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
+                                Voir le Projet <i class="fas fa-arrow-right ml-2"></i>
+                            </a>-->
+                        </div>
+                    </div>
+
+                      <!-- Projet 3 -->
+                      <div class="bg-gray-50 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition hover-scale">
+                        <div class="h-48 bg-gradient-to-r from-blue-500 to-blue-300 flex items-center justify-center">
+                            <i class="fas fa-shopping-cart text-white text-4xl md:text-5xl"></i>
+                        </div>
+                        <div class="p-5 md:p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-800">Application Publicitaire E-commerce
+                            </h3>
+                            <p class="text-gray-600 mb-3 md:mb-4">
+                                Développement d'une application web publicitaire des boutiques en ligne.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-3 md:mb-4">
+                                <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">Symfony</span>
+                                <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">MySQL</span>                                
+                            </div>
+                            <!--<a href="#" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
+                                Voir le Projet <i class="fas fa-arrow-right ml-2"></i>
+                            </a>-->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-10 md:mt-12">
+                    <a href="https://github.com/HammamiNihed" class="inline-flex items-center px-5 py-2 md:px-6 md:py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition">
+                        <i class="fab fa-github mr-2"></i> Voir Tous les Projets sur GitHub
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Contact -->
+        <section id="contact" class="py-16 md:py-20 bg-gray-50">
+            <div class="container mx-auto px-4 sm:px-6">
+                <h2 class="text-3xl font-bold text-center mb-12 md:mb-16">
+                    <span class="section-title">Contactez-moi</span>
+                </h2>
+                
+                <div class="grid md:grid-cols-2 gap-8 md:gap-12">
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-4 md:mb-6 text-gray-800">Contact</h3>
+                        <p class="text-gray-600 mb-6 md:mb-8">
+                            Je suis toujours ouvert à discuter de nouvelles opportunités, ou à répondre à toutes vos questions.
+                        </p>
+                        
+                        <div class="space-y-4 md:space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-purple-100 p-3 rounded-full mr-3 md:mr-4">
+                                    <i class="fas fa-map-marker-alt text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Localisation</h4>
+                                    <p class="text-gray-600">Nabeul, Tunisie</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-purple-100 p-3 rounded-full mr-3 md:mr-4">
+                                    <i class="fas fa-envelope text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Email</h4>
+                                    <a href="mailto:hammaminihed5@gmail.com" class="text-purple-600 hover:underline">hammaminihed5@gmail.com</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-purple-100 p-3 rounded-full mr-3 md:mr-4">
+                                    <i class="fas fa-phone text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Téléphone</h4>
+                                    <a href="tel:+21625695906" class="text-purple-600 hover:underline">+216 25695906</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6 md:mt-8">
+                            <h4 class="font-semibold text-gray-800 mb-3 md:mb-4">Suivez-moi</h4>
+                            <div class="flex space-x-3 md:space-x-4">
+                                <a href="https://github.com/HammamiNihed" target="_blank" class="bg-gray-800 text-white p-3 rounded-full hover:bg-gray-700 transition">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/nihed-hammami-24ab78194" target="_blank" class="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 transition">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <form id="contact-form" class="bg-white p-6 md:p-8 rounded-xl shadow-md">
+                            <div class="mb-4 md:mb-6">
+                                <label for="name" class="block text-gray-700 font-medium mb-2">Votre nom *</label>
+                                <input type="text" id="name" name="from_name" required 
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                                    placeholder="John Doe">
+                            </div>
+                            
+                            <div class="mb-4 md:mb-6">
+                                <label for="email" class="block text-gray-700 font-medium mb-2">Votre Email *</label>
+                                <input type="email" id="email" name="from_email" required 
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                                    placeholder="john@example.com">
+                            </div>
+                            
+                            <div class="mb-4 md:mb-6">
+                                <label for="message" class="block text-gray-700 font-medium mb-2">Votre Message *</label>
+                                <textarea id="message" name="message" rows="4" required 
+                                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                                        placeholder="Votre message ..."></textarea>
+                            </div>
+                            
+                            <button type="submit" id="submit-btn" class="w-full bg-gradient-to-r from-purple-600 to-purple-400 text-white py-3 rounded-lg hover:shadow-lg transition flex items-center justify-center">
+                                <i class="fas fa-paper-plane mr-2"></i> 
+                                <span id="btn-text">Envoyer</span>
+                            </button>
+                            
+                            <!-- Message de confirmation/erreur -->
+                            <div id="form-message" class="mt-4 p-4 rounded-lg hidden"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bouton retour en haut -->
+        <button id="back-to-top" class="fixed bottom-8 right-8 bg-purple-600 text-white p-4 rounded-full shadow-lg hover:bg-purple-700 transition opacity-0 invisible z-50">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        <!-- Pied de page -->
+        <footer class="bg-gray-900 text-white py-10 md:py-12">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="mb-4 md:mb-0 text-center md:text-left">
+                        <div class="text-2xl font-bold mb-2">
+                            <span class="gradient-text">Nihed</span> <span class="text-white">Hammami</span>
+                        </div>
+                        <p class="text-gray-400">Ingénieure Logiciel</p>
+                    </div>
+                    
+                    <div class="flex space-x-4 md:space-x-6">
+                        <a href="https://github.com/HammamiNihed" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/nihed-hammami-24ab78194" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-linkedin-in text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="border-t border-gray-800 mt-6 md:mt-8 pt-6 md:pt-8 text-center text-gray-400">
+                    <p>&copy; 2025 Nihed Hammami. Tous droits réservés.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Menu mobile toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.toggle('open');
+            
+            // Changer l'icône selon l'état du menu
+            const icon = mobileMenuButton.querySelector('i');
+            if (mobileMenu.classList.contains('open')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Fermer le menu mobile en cliquant sur un lien
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.remove('open');
+                mobileMenuButton.querySelector('i').classList.remove('fa-times');
+                mobileMenuButton.querySelector('i').classList.add('fa-bars');
+            });
+        });
+
+        // Défilement fluide pour les liens de navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Initialiser particles.js
+        if (document.getElementById('particles-js')) {
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": {
+                        "value": 70,
+                        "density": {
+                            "enable": true,
+                            "value_area": 800
+                        }
+                    },
+                    "color": {
+                        "value": "#7C3AED"
+                    },
+                    "shape": {
+                        "type": "circle",
+                        "stroke": {
+                            "width": 0,
+                            "color": "#000000"
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.4,
+                        "random": false
+                    },
+                    "size": {
+                        "value": 3,
+                        "random": true
+                    },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 140,
+                        "color": "#7C3AED",
+                        "opacity": 0.2,
+                        "width": 1
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 1.5,
+                        "direction": "none",
+                        "random": false,
+                        "straight": false,
+                        "out_mode": "out",
+                        "bounce": false
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "grab"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "push"
+                        }
+                    }
+                }
+            });
+        }
+
+        // Animation au défilement
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fadeIn');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+        
+        // Ajouter une ombre à l'en-tête au défilement
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 10) {
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+        });
+        
+        // Bouton retour en haut
+        const backToTopButton = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+
+    <script>
+        // Initialiser EmailJS
+        (function() {
+            emailjs.init("IKTXMvS9xDIqshG96"); // Remplacez par votre Public Key
+        })();
+    
+        // Gestion du formulaire de contact
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const submitBtn = document.getElementById('submit-btn');
+            const btnText = document.getElementById('btn-text');
+            const formMessage = document.getElementById('form-message');
+            
+            // Désactiver le bouton pendant l'envoi
+            submitBtn.disabled = true;
+            btnText.textContent = 'Envoi en cours...';
+            submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            
+            // Masquer les anciens messages
+            formMessage.classList.add('hidden');
+            
+            // Envoyer l'email via EmailJS
+            emailjs.sendForm('service_x1mbf4w', 'template_5rcsfnq', this)
+                .then(function(response) {
+                    console.log('SUCCÈS!', response.status, response.text);
+                    
+                    // Afficher le message de succès
+                    formMessage.innerHTML = '<i class="fas fa-check-circle mr-2"></i>Message envoyé avec succès! Je vous répondrai bientôt.';
+                    formMessage.classList.remove('hidden', 'bg-red-100', 'text-red-700', 'border-red-400');
+                    formMessage.classList.add('bg-green-100', 'text-green-700', 'border', 'border-green-400');
+                    
+                    // Réinitialiser le formulaire
+                    document.getElementById('contact-form').reset();
+                    
+                    // Réactiver le bouton
+                    submitBtn.disabled = false;
+                    btnText.textContent = 'Envoyer';
+                    submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                    
+                    // Masquer le message après 5 secondes
+                    setTimeout(function() {
+                        formMessage.classList.add('hidden');
+                    }, 5000);
+                    
+                }, function(error) {
+                    console.log('ÉCHEC...', error);
+                    
+                    // Afficher le message d'erreur
+                    formMessage.innerHTML = '<i class="fas fa-exclamation-circle mr-2"></i>Erreur lors de l\'envoi. Veuillez réessayer ou m\'envoyer un email directement.';
+                    formMessage.classList.remove('hidden', 'bg-green-100', 'text-green-700', 'border-green-400');
+                    formMessage.classList.add('bg-red-100', 'text-red-700', 'border', 'border-red-400');
+                    
+                    // Réactiver le bouton
+                    submitBtn.disabled = false;
+                    btnText.textContent = 'Envoyer';
+                    submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                });
+        });
+    </script>
+</body>
+</html>
